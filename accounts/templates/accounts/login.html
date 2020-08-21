@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+
+    <title>Login</title>
+</head>
+
+<body>
+
+    <h1>login page</h1>
+
+    <form action="" method="POST" class="form">
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row">
+                <input type="text" name="username" placeholder="username...">
+                <input type="password" name="password" placeholder="password...">
+            </div>
+            <input type="submit" class="btn btn-outline-success" value="login">
+            <p>
+                {% for message in messages %} {{message}} {% endfor %}
+            </p>
+
+
+            <div>
+                <a href="{% url 'register' %}" class="btn btn-outline-dark my-3">Register</a>
+            </div>
+        </div>
+
+    </form>
+
+
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+</body>
+
+</html>

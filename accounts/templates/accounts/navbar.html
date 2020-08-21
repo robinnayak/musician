@@ -1,0 +1,38 @@
+{% load static %}
+<style>
+    .hello-msg {
+        font-size: 18px;
+        color: #ffffff;
+        margin-right: 20px;
+    }
+    
+    .profile-pic {
+        max-width: 50px;
+        max-height: 50px;
+        margin: 0 auto;
+        border-radius: 50%;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    {% if request.user.is_staff %}
+    <a class="navbar-brand" href="{% url 'home' %}">logo</a> {% else %}
+    <a class="navbar-brand" href="{% url 'home' %}">
+        <img class="profile-pic" src="{{request.user.musician.profile_pic.url}}">
+    </a>
+    {% endif %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a> {% if request.user.is_staff %}
+            <a class="nav-item nav-link" href="{% url 'album_list' %}">Albumlist</a> {% else %}
+            <a class="nav-item nav-link" href="{% url 'account-setting' %}">Account settings</a> {% endif %}
+        </div>
+
+    </div>
+
+    <span class="hello-msg">Hello , {{request.user}} </span>
+    <a href="{% url 'logout' %}" class="hello-msg"> Logout </a>
+</nav>

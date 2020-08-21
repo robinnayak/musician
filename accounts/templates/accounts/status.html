@@ -1,0 +1,48 @@
+<style>
+    .customm-card {
+        background-color: aquamarine;
+    }
+    
+    .customm-text {
+        color: ghostwhite;
+        font-size: 1.5rem;
+    }
+    
+    .customm-head {
+        background-color: ghostwhite;
+        font-size: 2rem;
+        color: gold;
+    }
+</style>
+
+
+
+<br>
+
+<!-- status bar starts -->
+<div class="row text-center">
+    <div class="col">
+        <div class="card customm-card">
+            {% if request.user.is_staff %}
+            <div class="card-header customm-head">No of Musician</div>
+            <div class="card-body customm-text">{{musicianlength}}</div>
+            {% else %}
+            <div class="card-header customm-head">Musician id</div>
+            <div class="card-body customm-text">{{musicianid}}</div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col">
+        <div class="card customm-card">
+            <div class="card-header customm-head">Total Album</div>
+            <div class="card-body customm-text">{{nober}}</div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card customm-card">
+            <div class="card-header customm-head">Today-Date</div>
+            <div class="card-body customm-text">{{today}}</div>
+        </div>
+    </div>
+</div>
+<!-- status bar ends -->

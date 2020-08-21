@@ -1,0 +1,46 @@
+{% extends 'accounts/base.html' %} {% block head_title %} home {% endblock %} {% load static %}
+
+<!-- home  -->
+{% block content %}
+<!-- status.html -->
+{% include 'accounts/status.html' %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center text-secondary">{{musician}}</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4 class="text-center my-4 py-2 text-secondary">Musician Detail</h4>
+            <a href="{% url 'create_album' musicianid %}" class="btn btn-success btn-outline-info text-dark btn-block">Create Album</a>
+            <table class="table bg-dark text-light text-center ">
+                <tr>
+                    <th>Name</th>
+                    <th>Album</th>
+                    <th>Instrument</th>
+                    <th>Stars</th>
+                    <th>Profile</th>
+                </tr>
+
+                {% for albums in album %}
+                <tr>
+                    <td>{{albums.artist.first_name}}</td>
+                    <td>{{albums.name}}</td>
+                    <td>{{albums.artist.instrument}}</td>
+                    <td>{{albums.num_stars}}</td>
+                    <td><a href="{% url 'update_musician' albums.id %}" class="btn btn-secondary">Update</a></td>
+                    <!-- erroe  needed to solve -->
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.custom-container {
+    min-height: 100vh;
+    background-color: burlywood;
+    /* background-color: beige; */
+}

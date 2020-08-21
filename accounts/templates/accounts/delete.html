@@ -1,0 +1,6 @@
+<form action="{% url 'delete_album' album.id %}" method="POST">
+    {% csrf_token %}
+    <h1>Are you sure you want to delete</h1>
+    <a href="{% url 'home' %}">Cancel</a>
+    <input type="submit" name="Confirm" value="Delete">
+</form>

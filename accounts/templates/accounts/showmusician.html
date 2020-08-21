@@ -1,0 +1,43 @@
+{% extends 'accounts/base.html' %} {% block content %}
+
+
+<h1 class="text-center">Show Musician Page</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h3 class="text-center bg-secondary text-danger">
+                {{musician.first_name}}
+            </h3>
+            <hr>
+            <a href="{% url 'create_album' musician.id %}" class="btn btn-secondary">Create Album</a>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table text-center ">
+                <tr>
+                    <th>Album list</th>
+                    <th>Instrument</th>
+                    <th>Release date</th>
+                    <th>Num stars</th>
+                    <th>Update</th>
+                </tr>
+                {% for alb in musician.album_set.all %}
+                <tr>
+                    <td>{{alb}}</td>
+                    <td>{{alb.artist.instrument}}</td>
+                    <td>{{alb.release_date}}</td>
+                    <td>{{alb.num_stars}}</td>
+                    <td><a href="{% url 'update_musician' alb.id %}" class="btn btn-outline-info  btn-block">Update</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

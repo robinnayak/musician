@@ -1,0 +1,13 @@
+{% extends 'accounts/base.html' %} {% block content %}
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <h1>Create Album</h1>
+    {{ form.management_form }} {% for fields in form %} {{fields}}
+    <hr> {% endfor %}
+    <input type="submit" value="submit" class=" btn btn-success">
+</form>
+
+{% endblock %}

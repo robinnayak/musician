@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+
+    <title>Register</title>
+</head>
+
+<body>
+
+    <h1>register page</h1>
+
+    <form action="" method="POST" class="form">
+        {% csrf_token %}
+        <div>
+            {{form.username.label}} {{form.username}}
+        </div>
+        <div>
+            {{form.email.label}} {{form.email}}
+        </div>
+
+        <div>
+            {{form.password1.label}} {{form.password1}}
+        </div>
+
+        <div>
+            {{form.password2.label}} {{form.password2}}
+        </div>
+
+        {{form.errors}}
+        <input type="submit" class="btn btn-outline-success" value="register">
+        <div>
+
+            <a href="{% url 'login' %}" class="btn btn-outline-dark my-3">login</a>
+        </div>
+    </form>
+
+
+
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+</body>
+
+</html>

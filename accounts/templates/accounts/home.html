@@ -1,0 +1,39 @@
+{% extends 'accounts/base.html' %} {% block head_title %} home {% endblock %} {% load static %}
+
+<!-- home  -->
+{% block content %}
+<!-- status.html -->
+{% include 'accounts/status.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4 class="text-center my-4 py-2 text-secondary">Musician Detail</h4>
+            <table class="table bg-dark text-light text-center ">
+                <tr>
+                    <th>Name</th>
+                    <th>Album</th>
+                    <th>Instrument</th>
+                    <th>Stars</th>
+                    <th>Profile</th>
+                </tr>
+                {% for musicians in musician %}
+                <tr>
+                    <td>{{musicians.first_name}}</td>
+                    <td>
+                        {% for alb in musicians.album_set.all|slice:"1" %} {{alb}} {% endfor %}
+                    </td>
+                    <td>{{musicians.instrument}}</td>
+                    <td>
+                        {% for alb in musicians.album_set.all|slice:"1" %} {{alb.num_stars}} {% endfor %}
+                    </td>
+                    <td><a href="{% url 'show_musician' musicians.id %}" class="btn btn-secondary">View</a></td>
+                    <!-- erroe  needed to solve -->
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
