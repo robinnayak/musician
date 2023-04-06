@@ -117,12 +117,12 @@ def ShowMusician(request,pk):
 @allowed_user(allowed_user=['admin','customer'])
 def Createalbum(request,pk):
     musician = Musician.objects.get(id=pk)
-    AlbumFormSet = inlineformset_factory(Musician,Album,fields=('name','num_stars','season'), extra=5) 
+    AlbumFormSet = inlineformset_factory(Musician,Album,fields=('name','num_stars','audio_file','season'), extra=5) 
     formset = AlbumFormSet(queryset=Album.objects.none(), instance=musician)
     # form = Albumform()
     if request.method == "POST":
         print(request.POST)
-        formset = AlbumFormSet(request.POST, instance=musician)
+        formset = AlbumFormSet(request.POST,request.FILES,instance=musician)
         if formset.is_valid():
             formset.save()
             return redirect('/',pk = musician.id )
@@ -140,7 +140,7 @@ def Updatemusician(request,pk):
 
     if request.method == 'POST':
         # print("here is ",request.POST)
-        form = Albumform(request.POST, instance=album)
+        form = Albumform(request.POST,request.FILES,instance=album)
         if form.is_valid():
             form.save()
             return redirect('/')

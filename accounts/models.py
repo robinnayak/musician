@@ -34,6 +34,7 @@ class Album(models.Model):
     name = models.CharField(max_length=100)
     season = models.ManyToManyField(Seasons, blank=True)
     release_date = models.DateField(blank=True, null=True, auto_now_add=timezone.now())
+    audio_file = models.FileField(upload_to='music',blank= True, null= True)
     num_stars = models.IntegerField(null=True, default=1 )
 
     def __str__(self):

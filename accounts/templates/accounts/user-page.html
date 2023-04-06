@@ -11,6 +11,7 @@
     <div class="row">
         <div class="col">
             <h1 class="text-center text-secondary">{{musician}}</h1>
+            
         </div>
     </div>
 </div>
@@ -25,6 +26,7 @@
                     <th>Album</th>
                     <th>Instrument</th>
                     <th>Stars</th>
+                    <th>Play me </th>
                     <th>Profile</th>
                 </tr>
 
@@ -34,6 +36,8 @@
                     <td>{{albums.name}}</td>
                     <td>{{albums.artist.instrument}}</td>
                     <td>{{albums.num_stars}}</td>
+                    <td>{{albums.audio_file}}</td>
+                    <td><audio src="{{albums.audio_file}}" controls></audio></td> 
                     <td><a href="{% url 'update_musician' albums.id %}" class="btn btn-secondary">Update</a></td>
                     <!-- erroe  needed to solve -->
                 </tr>
